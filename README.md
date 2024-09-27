@@ -54,10 +54,14 @@ The dataset used in this project is related to used car sales in the U.S. and in
 - **vehicles_us.csv**: The dataset used for analysis and visualizations.
 - **README.md**: This file, which contains project documentation.
 
-## How to Deploy the Project Yourself
+## Live Application
+You can view and interact with the dashboard live at this URL:  
+**[Car Sales Dashboard on Render](https://carsalesdashboard.onrender.com)**
 
-If you'd like to deploy the project yourself, follow these steps:
+## Running Locally
 
-1. **Fork the repository** from GitHub:
+To run this project locally on your machine, follow the steps below:
+
+1. Clone this repository:
    ```bash
-   git clone https://github.com/ayoungfloof/sprint_4_project
+   git clone https://github.com/ayoungfloof/sprint_4_project.git
