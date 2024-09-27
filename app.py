@@ -28,6 +28,12 @@ df = df.drop_duplicates()
 # Create 'manufacturer' column by extracting the first word from 'model'
 df['manufacturer'] = df['model'].str.split().str[0]
 
+# Insert code to create the 'odometer_range' column here:
+# Bin the odometer readings into ranges for the bar plot
+bins = [0, 25000, 50000, 75000, 100000, 150000, 200000, 250000, 300000]
+labels = ['0-25K', '25K-50K', '50K-75K', '75K-100K', '100K-150K', '150K-200K', '200K-250K', '250K+']
+df['odometer_range'] = pd.cut(df['odometer'], bins=bins, labels=labels)
+
 # Display cleaned data with scrollbars
 st.subheader('Cleaned Dataset Overview')
 st.dataframe(df)
