@@ -200,8 +200,13 @@ selected_df = df[
 # Group by 'manufacturer', 'type', and 'odometer_range' and calculate the average price
 avg_price_by_manufacturer_type_odometer = selected_df.groupby(['manufacturer', 'type', 'odometer_range'])['price'].mean().reset_index()
 
-# Create and display the bar plot for odometer range comparison
+# Create a new column to reflect only the selected manufacturers and types in the legend
 avg_price_by_manufacturer_type_odometer['manufacturer_type'] = avg_price_by_manufacturer_type_odometer['manufacturer'] + " (" + avg_price_by_manufacturer_type_odometer['type'] + ")"
+
+# Restrict the legend to show only selected manufacturers and types
+unique_legend_entries = avg_price_by_manufacturer_type_odometer['manufacturer_type'].unique()
+
+# Create and display the bar plot for odometer range comparison
 fig5 = px.bar(
     avg_price_by_manufacturer_type_odometer,
     x='odometer_range',
@@ -217,6 +222,11 @@ fig5.update_layout(
     yaxis=dict(showgrid=True, gridcolor='lightgray', gridwidth=1),
     xaxis=dict(showgrid=True, gridcolor='lightgray', gridwidth=1),
     legend_title_text='Manufacturer and Vehicle Type'
+)
+
+# Ensure only selected manufacturer types appear in the legend
+fig5.for_each_trace(
+    lambda t: t.update(name=t.name if t.name in unique_legend_entries else None, visible="legendonly" if t.name not in unique_legend_entries else True)
 )
 
 # Display the bar plot
