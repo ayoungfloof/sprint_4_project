@@ -60,7 +60,6 @@ To view and interact with the dashboard live, use this URL:
 ```bash
 https://carsalesdashboard.onrender.com
 
-**[Car Sales Dashboard on Render](https://carsalesdashboard.onrender.com)**
 
 ## Running Locally
 
