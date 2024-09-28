@@ -55,7 +55,11 @@ The dataset used in this project is related to used car sales in the U.S. and in
 - **README.md**: This file, which contains project documentation.
 
 ## Live Application
-You can view and interact with the dashboard live at this URL:  
+To view and interact with the dashboard live, use this URL:
+
+```bash
+https://carsalesdashboard.onrender.com
+
 **[Car Sales Dashboard on Render](https://carsalesdashboard.onrender.com)**
 
 ## Running Locally
