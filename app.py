@@ -29,10 +29,16 @@ df = df.drop_duplicates()
 df['manufacturer'] = df['model'].str.split().str[0]
 
 # Insert code to create the 'odometer_range' column here:
-# Bin the odometer readings into ranges for the bar plot
 bins = [0, 25000, 50000, 75000, 100000, 150000, 200000, 250000, 300000]
 labels = ['0-25K', '25K-50K', '50K-75K', '75K-100K', '100K-150K', '150K-200K', '200K-250K', '250K+']
 df['odometer_range'] = pd.cut(df['odometer'], bins=bins, labels=labels)
+
+# Checkbox to allow showing a sample
+use_sample = st.checkbox("Show sample (first 10,000 rows)")
+
+# Apply the sample based on the checkbox
+if use_sample:
+    df = df.head(10000)
 
 # Display cleaned data with scrollbars
 st.subheader('Cleaned Dataset Overview')
@@ -70,6 +76,7 @@ fig.update_layout(
 
 # Display the first histogram
 st.plotly_chart(fig)
+
 
 # Streamlit section for filtering manufacturers and displaying the second histogram
 st.subheader('Price Distribution by Manufacturer')
