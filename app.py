@@ -28,15 +28,19 @@ df = df.drop_duplicates()
 # Create the 'manufacturer' column by extracting the first word from the 'model' column
 df['manufacturer'] = df['model'].str.split().str[0]
 
+# Re-add cleaned data display with scrollbars
+st.subheader('Cleaned Dataset Overview')
+st.dataframe(df) 
+
 # Streamlit section for filtering manufacturers and displaying the first histogram
 st.subheader('Distribution of Days Listed by Manufacturer')
 
-# Checkbox to exclude cars above $75,000 in price
-filter_price = st.checkbox("Exclude cars priced above $75,000")
+# Checkbox to exclude cars above $50,000 in price
+filter_price = st.checkbox("Exclude cars priced above $50,000")
 
 # Apply the filter if the checkbox is selected
 if filter_price:
-    df = df[df['price'] <= 75000]
+    df = df[df['price'] <= 50000]
 
 # Let the user select up to three manufacturers
 manufacturers = df['manufacturer'].unique()
